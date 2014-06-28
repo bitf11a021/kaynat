@@ -1,0 +1,27 @@
+﻿@model AroundTheWorld_1._1_.Models.Hotel
+@{
+    ViewBag.Title = "Marriot";
+     Layout = "~/Views/Shared/_Layouttour.cshtml";
+}
+}
+
+<h2>Marriot</h2>
+
+@using (Html.BeginForm("Marriot2", "Destinations", FormMethod.Post))
+    {
+        <table style="margin-left:300px">
+
+ <div>
+          <tr><td><p>UserName</p></td><td> <input type="text" name="cust-name" /></td></tr>
+  
+           <div id="result"></div>
+            
+</div>
+		 <tr><td><p>Number of Rooms</p></td><td> <input type="number" name="numb-rooms" /></td> 
+         <tr><td><p>Date</p></td><td> <input type="date" name="date" /></td> 
+         <tr><td><p>Credit Card Number</p></td><td> <input type="Number" name="card-number" /></td> 
+         <tr><td><input type="submit" value="Done"/></td></tr>
+                      
+            </table>
+          }
+  </div>

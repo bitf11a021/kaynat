@@ -1,0 +1,88 @@
+﻿ @{
+    Layout = null;
+    }
+
+@{
+    ViewBag.Title = "login";
+    Layout = "~/Views/Shared/_Layouttour.cshtml";
+}
+
+<h2>Login</h2>
+            
+            <div class="cleaner h50"></div>
+
+			<p><input type="checkbox" />
+			<a href="#">Remember me</a> on this website.</p>
+                
+                <form method="post" name="login" action ="/Accounts/checkLogin">
+                   
+            <h5><strong>Login INFORMATION</strong></h5>
+            <div class="content_half float_l checkout">
+				Enter UserName :  
+                  <input type="text" id="user" name="user"  style="width:300px;"  />
+                <br />
+                <br />
+
+                <div id="result"></div>
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+
+        $(document).ready(function () {
+
+            $('#checking').hide();
+
+            $('#b1').click(function () {
+
+                var userName = $('#UserName').val();
+
+                //alert('User Name ='+ userName);
+                $('#checking').show();
+                $.getJSON("/home/CheckUserName?UserName=" + userName, function (data) {
+                    $('#checking').hide();
+                    if (data) {
+                        $('#result').text("User already exists in database");
+
+                    }
+                    else {
+                        $('#result').text("User Name is available");
+                    }
+                });
+
+            });
+
+        });
+    </script>
+              Enter Password:
+				<input type="password" id="pswd"  name="pswd"style="width:300px;"  />
+                <br />
+                <br />
+
+
+                 <input type="submit" class="submit_btn" name="submit" id="submit" value="Submit" />
+                    <div id="content" class="float_r">
+        	
+
+
+                       
+                   </form>
+           @* <table style="border:1px solid #CCCCCC;" width="100%">
+                <tr>
+                    <td height="80px"> <img src="~/images/paypal.gif" alt="paypal" /></td>
+                    <td width="400px;" style="padding: 0px 20px;">Recommended if you have a PayPal account. Fastest delivery time.
+                    </td>
+                    <td><a href="#" class="more">PAYPAL</a></td>
+                </tr>
+                <tr>
+                    <td  height="80px"><img src="~/images/2co.gif" alt="paypal" />
+                    </td>
+                    <td  width="400px;" style="padding: 0px 20px;">2Checkout.com, Inc. is an authorized retailer of goods and services. 2CheckOut accepts customer orders via online checks, Visa, MasterCard, Discover, American Express, Diners, JCB and debit cards with the Visa, Mastercard logo. Validate <a href="http://validator.w3.org/check?uri=referer" rel="nofollow">XHTML</a> &amp; <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow">CSS</a>.</td>
+                    <td><a href="#" class="more">2CHECKOUT</a></td>
+                </tr>
+            </table>*@
+        </div> 
+        <div class="cleaner"></div>
+            </div>
+    
+   
+
+

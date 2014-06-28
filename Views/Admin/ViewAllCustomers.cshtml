@@ -1,0 +1,18 @@
+﻿@model AroundTheWorld_1._1_.Models.Customer
+@{
+    ViewBag.Title = "ViewAllCustomers";
+    Layout = "~/Views/Shared/_Layouttour.cshtml";
+}
+
+<h2>View All Customers</h2>
+@foreach (var x in ViewBag.X)
+{
+    <div class="extra-wrap" >
+                                            	<h3>@x.Name</h3>
+                                                <p class="p1">@x.UserName</p>
+                                                <p class="p1">@x.Password</p>
+                                                <p class="p1">@x.PhoneNumber</p>
+                                                <p class="p1">@x.Gender</p>
+                                              
+                                            </div> 
+}

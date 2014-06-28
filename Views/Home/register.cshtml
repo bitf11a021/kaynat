@@ -1,0 +1,67 @@
+﻿@model AroundTheWorld_1._1_.Models.Customer
+@{
+    ViewBag.Title = "register";
+     Layout = "~/Views/Shared/_Layouttour.cshtml";
+}
+ 
+
+<h2>Register</h2>
+
+    
+
+ 
+
+<div id="leftblockonePan"  style="text-align:left; vertical-align:central">
+     @using (Html.BeginForm("register1", "Home", FormMethod.Post))
+    {
+         
+        <table style="margin-left:300px">
+         @Html.ValidationSummary(true);
+            
+            <input type="email" name="email-signup" />
+<div>
+          <tr><td><p>UserName: </p></td><td> @Html.TextBoxFor(m => m.UserName) @Html.ValidationMessageFor(m => m.UserName) </td><td><input type="button" id="b1" value="Check" /></td><td><div id="checking">Checking...</div></td></tr>
+  
+           <div id="result"></div>
+            
+</div>
+		 <tr><td><p>Name</p></td><td> <input type="text" name="name-register" /></td> 
+         <tr><td><p>Password</p></td><td> <input type="password" name="paswd-register" /></td> 
+              <input type="Number" name="phne-register" />
+         <tr><td><p>PhoneNumber</p></td><td> @Html.TextBoxFor(m=> m.PhoneNumber) @Html.ValidationMessageFor(m=> m.PhoneNumber)</td> 
+         <tr><td><p >Date of Birth:</p> </td><td> <input type="text" name="calendar" /></td></tr>
+          <tr><td><p >Gender</p> </td><td> <select name="gender_select" style=""><option id="male_option">Male</option><option id="female_option">Female</option></select></td></tr>
+          <tr><td><input type="submit" value="Proceed"/></td></tr>
+                      
+            </table>
+          }
+  </div>
+           <script>
+
+               $(document).ready(function () {
+
+                   $('#checking').hide();
+
+                   $('#b1').click(function () {
+
+                       var UserName = $('#UserName').val();
+                       $('#checking').show();
+                       $.getJSON("/Account/CheckUserName?USserName-Register=" + UserName, function (data) {
+                           $('#checking').hide();
+                           if (data) {
+                               $('#result').text("Email already exists in database");
+
+                           }
+                           else {
+                               $('#result').text("Email is available");
+                           }
+                       });
+
+                   });
+
+               });
+    </script>
+          @section Scripts
+          {
+              @Scripts.Render("~/bundles/jqueryval");
+              }  
